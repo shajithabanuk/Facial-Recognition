@@ -1,0 +1,19 @@
+import urllib.request
+import cv2
+import numpy as np
+import imutils
+
+url = 'http://192.168.29.29:8080'
+
+while True:
+    imgpath = urllib.request.urlopen(url)
+    imgNP = np.array(bytearray(imagpath.read()), dtype= np.uint8)
+    frame = cv2.imdecode(imgNP, -1)
+
+    frame= imutils.resize(frame, width= 450)
+    cv2.imshow("FRAME",frame)
+##    key = cv2.waitKey(1)
+##    if key== ord(q):
+##        exit(0)
+    if ord('q')==cv2.waitKey(1):
+        exit(0)
